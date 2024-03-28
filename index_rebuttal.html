@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+	<title>Slicedit Rebuttal</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  	<link href="style.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/ad96f96272.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	
+	<!-- navigation bar on the top, nav bar stick to the top -->
+	<nav id="navbar_top" class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 15px;">
+		<div class="container">
+				<a class="navbar-brand" href="">Slicedit Rebuttal</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="main_nav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="#more-examples">Examples</a></li>
+				<li class="nav-item"><a class="nav-link" href="#unconditional">Unconditional</a></li>
+				<li class="nav-item"><a class="nav-link" href="#ddim">DDIM vs. DDPM</a></li>
+				<li class="nav-item"><a class="nav-link" href="#ddim-config">DDIM Config</a></li>
+				<li class="nav-item"><a class="nav-link" href="#limitation">Limitation</a></li>
+			</ul>
+			</div> 
+		</div> 
+		</nav>
+	<!-- end nav bar -->
+
+	<div class="container-fluid"> 
+
+		<!-- top - author names, affiliation and links -->
+		<center>
+			<h1>Slicedit Rebuttal</h1>
+			<h5>This page contains many videos, please give it a minute to load</h5>
+		</center>
+		<!-- end top -->
+
+		<hr id="more-examples">
+		<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Multiple Objects Editing Examples</h1></center>
+		<center>
+			<div class="container-fluid">
+				<div class="row clearfix">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/original/swans-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1">Swans are swimming in the lake</p>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/edits/swans-flamingo-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1"><span style="color:red; font-weight:bold">Flamingos</span> are swimming in the lake</p>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/original/goldfish-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1">Goldfish are swimming</p>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/edits/goldfish-sharks-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1"><span style="color:red; font-weight:bold">Sharks</span> are swimming</p>
+					</div>
+				</div>
+			</div>
+			</center>
+		<br>
+
+		<hr id="unconditional">
+		<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Unconditional Inversion</h1></center>
+		<center>
+			<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+					<h5 class="title-responsive">Original</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/original/man-basket.mp4" type="video/mp4">
+						</video>
+					</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">Unconditional Inversion<h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/ablation/uncond-basketball-parker-v2.mp4" type="video/mp4">
+						</video>
+					<p class="p1">" " → <span style="color:red; font-weight:bold">Tony Parker</span> is spinning a basketball on his finger</p>
+					</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">Conditional Inversion</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/edits/basketball-parker-v2.mp4" type="video/mp4">
+						</video>
+					<p class="p1">A man is spinning a basketball on his finger → <span style="color:red; font-weight:bold">Tony Parker</span> is spinning a basketball on his finger</p>
+				</div>
+			</div>
+
+		</div>
+			</center>
+		<br>
+
+		
+		<hr id="ddim">
+			<center><h1 style="margin-top: 65px; margin-bottom: 30px;">DDIM vs. DDPM Inversion</h1></center>
+				<center>
+					<div class="container">
+						<div class="row justify-content-md-center">
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+								<h5 class="title-responsive" style="font-size: 28px;">Original</h5>
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/original/parkour.mp4" type="video/mp4">
+									</video>
+								</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<h5 class="title-responsive" style="font-size: 28px;">TokenFlow DDIM</h5>
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/comparison/parkour_tf-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<h5 class="title-responsive" style="font-size: 28px;">TokenFlow DDPM</h5>
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/ablation/tf_ddpm_parkour-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<h5 class="title-responsive" style="font-size: 28px;">Ours DDIM</h5>
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/ablation/parkour-robot-ddim-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<h5 class="title-responsive" style="font-size: 28px;">Ours DDPM</h5>
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/comparison/parkour_ours-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+						</div>	
+						<div class="row justify-content-md-center">
+							<p class="p1">A man is doing parkour → A <span style="color:red; font-weight:bold">shiny silver robot</span> is doing parkour</p>
+						</div>
+						<div class="row justify-content-md-center">
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/original/breakdance-flare.mp4" type="video/mp4">
+									</video>
+								</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/comparison/tf-dance-silver-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/ablation/tf-ddpm-dance-silver-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/ablation/dance-silver-ddim-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+							<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+								<video controls class="video-responsive" autoplay loop muted playsinline>
+									<source src="./resources/edits/dance-silver-v2.mp4" type="video/mp4">
+									</video>
+							</div>
+						</div>	
+						<div class="row justify-content-md-center">
+							<p class="p1">A man is dancing → A <span style="color:red; font-weight:bold">shiny silver robot</span> is dancing</p>
+						</div>
+					</div>
+					</center>
+					<center><p>TokenFlow perform per frame inversion. In the second column we provide TokenFlow results with DDIM inversion per frame, whereas in the third column we provide TokenFlow results
+						with DDPM inversion per frame. 
+						Slicedit perform inversion with the inflated denoiser over the whole volume. In the fourth column we provide Slicedit results with DDIM inversion over the whole volume, whereas 
+						in the fifth column we provide Slicedit results with DDPM inversion over the whole volume.	
+					</p></center>
+				<br>
+
+	<hr id="ddim-config">
+	<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Ours with Different DDIM Configuration</h1></center>
+	<center>
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+					<h5 class="title-responsive">Original</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/original/parkour.mp4" type="video/mp4">
+						</video>
+					</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">CFG Scale 10</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/ablation/ddim-10-parkour-v2.mp4" type="video/mp4">
+						</video>
+				</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">CFG Scale 15</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/ablation/ddim-15-parkour-v2.mp4" type="video/mp4">
+						</video>
+				</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">CFG Scale 20</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/ablation/ddim-20-parkour-v2.mp4" type="video/mp4">
+						</video>
+				</div>
+			</div>	
+			<div class="row justify-content-md-center">
+				<p class="p1">A man is doing parkour → A <span style="color:red; font-weight:bold">shiny silver robot</span> is doing parkour</p>
+			</div>
+			<center><p>Slicedit with DDIM inversion. Results for classifier-free guidance (CFG) value of 10,15,20.</p></center>
+	</center>
+			
+	<hr id="limitation">
+			<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Limitation</h1></center>
+
+			<center>
+		<div class="container-fluid">
+			<div class="row clearfix">
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+					<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+						<source src="./resources/original/dog-car.mp4" type="video/mp4">
+						</video>
+					<p class="p1">A small dog is looking out a car window</p>
+					</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+					<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+						<source src="./resources/edits/dog-car-elephant-v2.mp4" type="video/mp4">
+						</video>
+					<p class="p1">A small <span style="color:red; font-weight:bold">elephant</span> is looking out a car window</p>
+				</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+					<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+						<source src="./resources/original/tesla.mp4" type="video/mp4">
+						</video>
+					<p class="p1">A car on the road</p>
+					</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+					<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+						<source src="./resources/edits/tesla-tractor-v2.mp4" type="video/mp4">
+						</video>
+					<p class="p1">A <span style="color:red; font-weight:bold">tractor</span> on the road</p>
+				</div>
+			</div>
+		</div>
+
+				</center>
+			<br>
+		<!-- end Ablation -->
+
+		<hr>
+		<br>
+	<br>
+
+</div>
+
+</body>
+</html>
