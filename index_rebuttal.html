@@ -28,6 +28,7 @@
 				<li class="nav-item"><a class="nav-link" href="#unconditional">Unconditional</a></li>
 				<li class="nav-item"><a class="nav-link" href="#ddim">DDIM vs. DDPM</a></li>
 				<li class="nav-item"><a class="nav-link" href="#ddim-config">DDIM Config</a></li>
+				<li class="nav-item"><a class="nav-link" href="#slices">Slices Denoiser</a></li>
 				<li class="nav-item"><a class="nav-link" href="#limitation">Limitation</a></li>
 			</ul>
 			</div> 
@@ -181,7 +182,7 @@
 						</div>
 					</div>
 					</center>
-					<center><p>TokenFlow perform per frame inversion. In the second column we provide TokenFlow results with DDIM inversion per frame, whereas in the third column we provide TokenFlow results
+					<center><p style="max-width: 1250px;" class="video-responsive">TokenFlow perform per frame inversion. In the second column we provide TokenFlow results with DDIM inversion per frame, whereas in the third column we provide TokenFlow results
 						with DDPM inversion per frame. 
 						Slicedit perform inversion with the inflated denoiser over the whole volume. In the fourth column we provide Slicedit results with DDIM inversion over the whole volume, whereas 
 						in the fifth column we provide Slicedit results with DDPM inversion over the whole volume.	
@@ -224,6 +225,22 @@
 			<center><p>Slicedit with DDIM inversion. Results for classifier-free guidance (CFG) value of 10,15,20.</p></center>
 	</center>
 			
+	<hr id="slices">
+			<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Spatio-temporal Slices vs. Frames  Denoiser Prediction</h1></center>
+		<div class="container-fluid">
+			<center>
+				<div class="row clearfix">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<img src="./resources/graph_mse.png" class="video-responsive" style="max-width: 700px !important;">
+						</div>
+				</div>
+				<p style="max-width: 840px;" class="video-responsive">MSE of the predicted noise by Stable Diffusion and the added noise for different noise levels. It can be seen that the MSE achieved 
+					when denoising slices is similar to the MSE achieved when denoising frames. This validates that Stable Diffusion as an effective denoiser for spatio-temporal slices. 
+				</p>
+			</center>
+		</div>
+			<br>	
+
 	<hr id="limitation">
 			<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Limitation</h1></center>
 
