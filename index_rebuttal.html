@@ -28,7 +28,9 @@
 				<li class="nav-item"><a class="nav-link" href="#unconditional">Unconditional</a></li>
 				<li class="nav-item"><a class="nav-link" href="#ddim">DDIM vs. DDPM</a></li>
 				<li class="nav-item"><a class="nav-link" href="#ddim-config">DDIM Config</a></li>
+				<li class="nav-item"><a class="nav-link" href="#tf-config">TokenFlow Config</a></li>
 				<li class="nav-item"><a class="nav-link" href="#slices">Slices Denoiser</a></li>
+				<li class="nav-item"><a class="nav-link" href="#ea">EA Fig</a></li>
 				<li class="nav-item"><a class="nav-link" href="#limitation">Limitation</a></li>
 			</ul>
 			</div> 
@@ -224,7 +226,72 @@
 			</div>
 			<center><p>Slicedit with DDIM inversion. Results for classifier-free guidance (CFG) value of 10,15,20.</p></center>
 	</center>
-			
+
+	<hr id="tf-config">
+	<center><h1 style="margin-top: 65px; margin-bottom: 30px;">TokenFlow Different Configurations</h1></center>
+		<center>
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<h5 class="title-responsive" style="font-size: 21px;">Original</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/original/parkour.mp4" type="video/mp4">
+							</video>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<h5 class="title-responsive" style="font-size: 21px;">Ours</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/tf_configs/parkour-robot-parkour-ours-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<h5 class="title-responsive" style="font-size: 21px;">TokenFlow (TF)</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/tf_configs/tf-parkour-robot-parkour-original-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<h5 class="title-responsive" style="font-size: 21px;">TF w/ Default # Frames</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/tf_configs/tf-parkour-robot-parkour-40-frames-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+				</div>	
+				<div class="row justify-content-md-center">
+					<p class="p1">A man is doing parkour → A <span style="color:red; font-weight:bold">shiny silver robot</span> is doing parkour</p>
+				</div>
+				<div class="row justify-content-md-center">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/original/parkour.mp4" type="video/mp4">
+							</video>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/tf_configs/parkour-robot-jumping-ours-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/tf_configs/tf-parkour-robot-jumping-original-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/tf_configs/tf-parkour-robot-jumping-40-frames-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+				</div>	
+				<div class="row justify-content-md-center">
+					<p class="p1">A man is jumping → A <span style="color:red; font-weight:bold">shiny silver robot</span> is jumping</p>
+				</div>
+			</div>
+			</center>
+			<center><p style="max-width: 1250px;" class="video-responsive">
+			</p></center>
+		<br>
+
+
 	<hr id="slices">
 			<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Spatio-temporal Slices vs. Frames  Denoiser Prediction</h1></center>
 		<div class="container-fluid">
@@ -236,6 +303,26 @@
 				</div>
 				<p style="max-width: 840px;" class="video-responsive">MSE of the predicted noise by Stable Diffusion and the added noise for different noise levels. It can be seen that the MSE achieved 
 					when denoising slices is similar to the MSE achieved when denoising frames. This validates that Stable Diffusion as an effective denoiser for spatio-temporal slices. 
+				</p>
+			</center>
+		</div>
+			<br>	
+
+
+	<hr id="ea">
+			<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Extended Attention Figure</h1></center>
+		<div class="container-fluid">
+			<center>
+				<div class="row clearfix">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<img src="./resources/ea_fig.png" class="video-responsive" style="max-width: 900px !important;">
+						</div>
+				</div>
+				<p style="max-width: 840px;" class="video-responsive"><strong>Extended attention.</strong> Top: We calculate the extended attention between each frame (circle) within a processing batch (rectangle), and a
+					set of five key frames. In our implementation the processing batch is 6. The key frames are composed of thee fixed global key frames (red circles) and two local key frames (blue circles).
+					The global key frames are located at 1/6, 1/2, 5/6 of the entire video duration. The Local key frames are the 2<sup>nd</sup> and 5<sup>th</sup> frames within the processing batch. 
+					<br> Bottom:	All self attention layer in the upsampling blocks are changed into extended attention (marked in gray) except for ‘CrossAttnBlockUp2D_1’ where self 
+					attention is changed into extended attention only in the last two Transformer2DModel (followed Tokenflow).
 				</p>
 			</center>
 		</div>
