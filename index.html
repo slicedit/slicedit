@@ -1,0 +1,815 @@
+<!doctype html>
+<html>
+<head>
+	<title>Slicedit</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="shortcut icon" type="image/x-icon" href="resources/video-camera-svgrepo-com.svg">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  	<link href="style.css" rel="stylesheet" type="text/css">
+	<!-- <meta property="og:image" content="resources/teaser.png"/>  -->
+	<meta property="og:title" content="slicedit" />
+	<meta property="og:description" content="a website with slicedit results" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/ad96f96272.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	
+	<!-- navigation bar on the top, nav bar stick to the top -->
+	<nav id="navbar_top" class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 15px;">
+		<div class="container">
+				<a class="navbar-brand" href="">Slicedit</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="main_nav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="#examples">Examples</a></li>
+				<li class="nav-item"><a class="nav-link" href="#comparisons">Comparisons</a></li>
+				<li class="nav-item"><a class="nav-link" href="#ablation">Ablation</a></li>
+			</ul>
+			</div> 
+		</div> 
+		</nav>
+	<!-- end nav bar -->
+
+	<div class="container-xl"> 
+		<!-- top button -->
+		<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+			<i class="fas fa-arrow-up"></i>
+		</button>
+		<!-- end top button -->
+
+
+		<!-- Examples -->
+		<hr id="examples">
+		<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Editing Examples</h1></center>
+		<center>
+			<div class="container-fluid">
+				<div class="row clearfix">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/original/parkour.mp4" type="video/mp4">
+							</video>
+						<p class="p1">A man is jumping</p>
+						</div>
+					<div class="col" style="padding-right: 5px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/edits/humanoid-parkour-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1">A <span style="color:red; font-weight:bold">humanoid robot</span> is jumping</p>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/original/hike.mp4" type="video/mp4">
+							</video>
+						<p class="p1">A man is hiking in front of mountains</p>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/edits/hike-silver-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1">A <span style="color:red; font-weight:bold">shiny silver robot</span> is hiking in front of mountains</p>
+					</div>
+				</div>
+				<div class="row clearfix" style="margin-top: 30px;">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/original/man-running-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1">A man is running</p>
+						</div>
+					<div class="col" style="padding-right: 5px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/edits/running-bolt-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1"><span style="color:red; font-weight:bold">Usain Bolt</span> is running</p>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/original/man-surfing.mp4" type="video/mp4">
+							</video>
+						<p class="p1">A man is surfing</p>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/edits/surfing-ironman-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1"><span style="color:red; font-weight:bold">Iron Man</span> is surfing</p>
+					</div>
+				</div>
+				<div class="row clearfix" style="margin-top: 30px;">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/original/man-basket.mp4" type="video/mp4">
+							</video>
+						<p class="p1">A man is spinning a basketball on his finger</p>
+						</div>
+					<div class="col" style="padding-right: 5px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+							<source src="./resources/edits/basketball-steph-v2.mp4" type="video/mp4">
+							</video>
+						<p class="p1"><span style="color:red; font-weight:bold">Steph Curry</span> is spinning a basketball on his finger</p>
+					</div>
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/original/stork.mp4" type="video/mp4">
+								</video>
+							<p class="p1">A bird is standing in the water</p>
+							</div>
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/edits/stork-origami-pink-v2.mp4" type="video/mp4">
+								</video>
+							<p class="p1">A <span style="color:red; font-weight:bold">pink origami</span> bird is standing in the water</p>
+						</div>
+					</div>
+					<div class="row clearfix" style="margin-top: 30px;">
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/original/rabbit-watermelon.mp4" type="video/mp4">
+								</video>
+							<p class="p1">A black and white rabbit is eating</p>
+							</div>
+						<div class="col" style="padding-right: 5px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/edits/rabbit-origami-v2.mp4" type="video/mp4">
+								</video>
+							<p class="p1">A black and white <span style="color:red; font-weight:bold">origami</span> rabbit is eating</p>
+						</div>
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/original/cat-in-the-sun.mp4" type="video/mp4">
+								</video>
+							<p class="p1">A cat on the grass in the sun</p>
+							</div>
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/edits/cat-cheetah-v2.mp4" type="video/mp4">
+								</video>
+							<p class="p1">A <span style="color:red; font-weight:bold">cheetah</span> on the grass in the sun</p>
+						</div>
+					</div>
+					<div class="row clearfix" style="margin-top: 30px;">
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/original/swans-v2.mp4" type="video/mp4">
+								</video>
+							<p class="p1">Swans are swimming in the lake</p>
+							</div>
+						<div class="col" style="padding-right: 5px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/edits/swans-flamingo-v2.mp4" type="video/mp4">
+								</video>
+							<p class="p1"><span style="color:red; font-weight:bold">Flamingos</span> are swimming in the lake</p>
+						</div>
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/original/goldfish-v2.mp4" type="video/mp4">
+								</video>
+							<p class="p1">Fish are swimming</p>
+							</div>
+						<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+							<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+								<source src="./resources/edits/goldfish-sharks-v2.mp4" type="video/mp4">
+								</video>
+							<p class="p1"><span style="color:red; font-weight:bold">Sharks</span> are swimming</p>
+						</div>
+					</div>
+			</div>
+			</center>
+		<br>
+		<!-- end Examples -->
+
+			<!-- Comparisons -->
+			<hr id="comparisons">
+			<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Comparisons</h1></center>
+				<center>
+					<div id="myVideoCarousel" class="carousel" data-ride="carousel" data-interval="false">
+						<ol class="carousel-indicators video-carousel-indicators">
+						<li data-target="#myVideoCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myVideoCarousel" data-slide-to="1"></li>
+						<li data-target="#myVideoCarousel" data-slide-to="2"></li>
+						<li data-target="#myVideoCarousel" data-slide-to="3"></li>
+						<li data-target="#myVideoCarousel" data-slide-to="4"></li>
+						<li data-target="#myVideoCarousel" data-slide-to="5"></li>
+						<li data-target="#myVideoCarousel" data-slide-to="6"></li>
+						</ol>
+							<div class="carousel-inner">
+							<div class="carousel-item active" >
+								<div class="row justify-content-md-center">
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive">Original</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/original/parkour.mp4" type="video/mp4">
+										</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+											<h5 class="title-responsive">Ours</h5>
+											<video controls class="video-responsive" autoplay loop muted playsinline>
+												<source src="./resources/edits/silver-parkour-v2.mp4" type="video/mp4">
+												</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+											<h5 class="title-responsive">TokenFlow [1]</h5>
+											<video controls class="video-responsive" autoplay loop muted playsinline>
+												<source src="./resources/comparison/parkour_tf-v2.mp4" type="video/mp4">
+												</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+											<h5 class="title-responsive">Pix2Video [2]</h5>
+											<video controls class="video-responsive" autoplay loop muted playsinline>
+												<source src="./resources/comparison/parkour_pix2vid-v2.mp4" type="video/mp4">
+												</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive">ControlVideo [3]</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/parkour_cv-v2.mp4" type="video/mp4">
+											</video>
+								</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+											<h5 class="title-responsive">Rerender [4]</h5>
+											<video controls class="video-responsive" autoplay loop muted playsinline>
+												<source src="./resources/comparison/parkour_re-v2.mp4" type="video/mp4">
+												</video>
+									</div>
+								</div>
+									<div class="row justify-content-md-center">
+											<p class="p1">A man is doing parkour → A <span style="color:red; font-weight:bold">shiny silver robot</span> is doing parkour</p>
+									</div>
+							</div>	
+							<div class="carousel-item" >
+								<div class="row justify-content-md-center">
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive">Original</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/original/eagle-face.mp4" type="video/mp4">
+											</video>
+										</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive">Ours</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/edits/eagle-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive">TokenFlow [1]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/eagle_tf-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive">Pix2Video [2]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/eagle_pix2vid-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive">ControlVideo [3]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/eagle_cv-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive">Rerender [4]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/eagle_re-v2.mp4" type="video/mp4">
+											</video>
+										</div>
+									</div>
+								<div class="row justify-content-md-center">
+									<p class="p1">An eagle → A <span style="color:red; font-weight:bold">pixar style</span> eagle</p>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<div class="row justify-content-md-center">
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-smaller">Original</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/original/cat-in-the-sun.mp4" type="video/mp4">
+											</video>
+										</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Ours</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/edits/cat_lion-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">TokenFlow [1]</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cat_tf-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Pix2Video [2]</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cat_pix2vid-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">ControlVideo [3]</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cat_cv-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Tune A Video [5]</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cat_tav-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Flatten [6]</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cat_flatten-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Rerender [4]</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cat_re-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+								</div>
+								<div class="row justify-content-md-center">
+									<p class="p1">A cat on the grass in the sun → A <span style="color:red; font-weight:bold">lion</span> on the grass in the sun</p>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<div class="row justify-content-md-center">
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-smaller">Original</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/original/cows-grazing.mp4" type="video/mp4">
+											</video>
+										</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Ours</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/edits/cows_sheep-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-smaller">TokenFlow [1]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cows_tf-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-smaller">Pix2Video [2]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cows_pix2vid-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-smaller">ControlVideo [3]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cows_cv-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Tune A Video [5]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cows_tav-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Flatten [6]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cows_flatten-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-smaller">Rerender [4]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/cows_re-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+								</div>
+								<div class="row justify-content-md-center">
+									<p class="p1">Cows are grazing → <span style="color:red; font-weight:bold">Sheep</span> are grazing</p>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<div class="row justify-content-md-center">
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">Original</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/original/man-surfing.mp4" type="video/mp4">
+											</video>
+										</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">Ours</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/edits/surfing-robot-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">TokenFlow [1]</h5>		
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/surfing_tf-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Pix2Video [2]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/surfing_pix2vid-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">ControlVideo [3]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/surffing_cv-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">Tune A Video [5]</h5>		
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/surfing_tav-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Rerender [4]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/surfing_re-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+								</div>
+								<div class="row justify-content-md-center">
+									<p class="p1">A man is surfing → A <span style="color:red; font-weight:bold">shiny silver robot</span> is surfing</p>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<div class="row justify-content-md-center">
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">Original</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/original/penguin-v2.mp4" type="video/mp4">
+											</video>
+										</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Ours</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/edits/penguin-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">TokenFlow [1]</h5>		
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/penguin_tf-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Pix2Video [2]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/penguin_pix2vid-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">ControlVideo [3]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/penguin_cv-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">Tune A Video [5]</h5>		
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/penguin_tav-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Rerender [4]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/penguin_re-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+								</div>
+								<div class="row justify-content-md-center">
+									<p class="p1">A penguin → An <span style="color:red; font-weight:bold">origami</span> penguin</p>
+								</div>	
+							</div>
+							<div class="carousel-item">
+								<div class="row justify-content-md-center">
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">Original</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/original/bird-v2.mp4" type="video/mp4">
+											</video>
+										</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Ours</h5>
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/edits/bird-squiurrel-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">TokenFlow [1]</h5>		
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/bird_tf-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Pix2Video [2]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/bird-pix2vid-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">ControlVideo [3]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/bird_cv-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+										<h5 class="title-responsive-small">Tune A Video [5]</h5>		
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/bird_tav-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+									<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+										<h5 class="title-responsive-small">Rerender [4]</h5>	
+										<video controls class="video-responsive" autoplay loop muted playsinline>
+											<source src="./resources/comparison/bird_re-v2.mp4" type="video/mp4">
+											</video>
+									</div>
+								</div>
+								<div class="row justify-content-md-center">
+									<p class="p1">A bird → A <span style="color:red; font-weight:bold">squirrel</span></p>
+								</div>	
+							</div>
+						</div>	
+						<a class="carousel-control-prev" href="#myVideoCarousel" role="button" data-slide="prev">
+							<i class="fa-solid fa-circle-left fa-2xl left-arrow"></i>
+						<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#myVideoCarousel" role="button" data-slide="next">
+							<i class="fa-solid fa-circle-right fa-2xl right-arrow"></i>
+						<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</center>
+			
+		<!-- Ablation -->
+		<hr id="ablation">
+		<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Ablation Study</h1></center>
+		<!-- <h2>Examples of global editing</h2> -->
+		<!-- <p>Global editing is performed witt ...</p> -->
+		<center>
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+					<h5 class="title-responsive">Original</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/original/cow.mp4" type="video/mp4">
+						</video>
+					</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">Ours</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/edits/cow-origami-v2.mp4" type="video/mp4">
+						</video>
+					</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">w/o <b>y</b>-<i>t</i> slices</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/ablation/cow_no_slices-v2.mp4" type="video/mp4">
+						</video>
+				</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">w/o Attn. injection</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/ablation/cow_no_inj-v2.mp4" type="video/mp4">
+						</video>
+				</div>
+				<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+					<h5 class="title-responsive">DDIM Inversion</h5>
+					<video controls class="video-responsive" autoplay loop muted playsinline>
+						<source src="./resources/ablation/cow_ddim-v2.mp4" type="video/mp4">
+						</video>
+				</div>
+
+		</div>
+		<div class="row justify-content-md-center">
+			<p class="p1">A cow → An <span style="color:red; font-weight:bold">origami</span> cow</p>
+		</div>
+		<div class="row justify-content-md-center"  style="margin-top: 30px;">
+			<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+				<video controls class="video-responsive" autoplay loop muted playsinline>
+					<source src="./resources/original/parkour.mp4" type="video/mp4">
+					</video>
+				</div>
+			<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+				<video controls class="video-responsive" autoplay loop muted playsinline>
+					<source src="./resources/edits/humanoid-parkour-v2.mp4" type="video/mp4">
+					</video>
+				</div>
+			<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+				<video controls class="video-responsive" autoplay loop muted playsinline>
+					<source src="./resources/ablation/parkour_no_slices-v2.mp4" type="video/mp4">
+					</video>
+			</div>
+			<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+				<video controls class="video-responsive" autoplay loop muted playsinline>
+					<source src="./resources/ablation/parkour_no_inj-v2.mp4" type="video/mp4">
+					</video>
+			</div>
+			<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+				<video controls class="video-responsive" autoplay loop muted playsinline>
+					<source src="./resources/ablation/parkour_ddim-v2.mp4" type="video/mp4">
+					</video>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<p class="p1">A man is jumping → A <span style="color:red; font-weight:bold">humanoid robot</span> is jumping</p>
+		</div>
+		<center><p style="max-width: 1250px;" class="video-responsive">
+			Our method uses DDPM inversion. For ablation purposes we provide results of our method with DDIM inversion. 
+			As can be seen, when using DDIM inversion our method is not able to successfully edit the video according to the text prompt.	
+		</p></center>
+	</div>
+
+	</center>
+	<br>
+
+	<center><h1 style="margin-top: 65px; margin-bottom: 30px;">DDIM vs. DDPM Inversion</h1></center>
+		<center>
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<h5 class="title-responsive" style="font-size: 28px;">Original</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/original/parkour.mp4" type="video/mp4">
+							</video>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<h5 class="title-responsive" style="font-size: 28px;">TokenFlow DDIM</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/comparison/parkour_tf-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<h5 class="title-responsive" style="font-size: 28px;">TokenFlow DDPM</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/ablation/tf_ddpm_parkour-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<h5 class="title-responsive" style="font-size: 28px;">Ours DDIM</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/ablation/parkour-robot-ddim-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<h5 class="title-responsive" style="font-size: 28px;">Ours DDPM</h5>
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/edits/silver-parkour-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+				</div>	
+				<div class="row justify-content-md-center">
+					<p class="p1">A man is jumping → A <span style="color:red; font-weight:bold">shiny silver robot</span> is jumping</p>
+				</div>
+				<div class="row justify-content-md-center">
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/original/breakdance-flare.mp4" type="video/mp4">
+							</video>
+						</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/comparison/tf-dance-silver-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/ablation/tf-ddpm-dance-silver-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/ablation/dance-silver-ddim-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+					<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+						<video controls class="video-responsive" autoplay loop muted playsinline>
+							<source src="./resources/edits/breakdance-silver-v2.mp4" type="video/mp4">
+							</video>
+					</div>
+				</div>	
+				<div class="row justify-content-md-center">
+					<p class="p1">A man is dancing → A <span style="color:red; font-weight:bold">shiny silver robot</span> is dancing</p>
+				</div>
+			</div>
+			</center>
+			<center><p style="max-width: 1250px;" class="video-responsive">TokenFlow performs per frame inversion. In the second column we provide TokenFlow results with DDIM inversion per frame, whereas in the third column we provide TokenFlow results
+				with DDPM inversion per frame. 
+				Slicedit performs inversion with the inflated denoiser over the whole volume. In the fourth column we provide Slicedit results with DDIM inversion over the whole volume, whereas 
+				in the fifth column we provide Slicedit results with DDPM inversion over the whole volume.	
+			</p></center>
+		<br>
+
+<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Ours with Different DDIM Configuration</h1></center>
+<center>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+			<h5 class="title-responsive">Original</h5>
+			<video controls class="video-responsive" autoplay loop muted playsinline>
+				<source src="./resources/original/parkour.mp4" type="video/mp4">
+				</video>
+			</div>
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+			<h5 class="title-responsive">CFG Scale 10</h5>
+			<video controls class="video-responsive" autoplay loop muted playsinline>
+				<source src="./resources/ablation/ddim-10-parkour-v2.mp4" type="video/mp4">
+				</video>
+		</div>
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+			<h5 class="title-responsive">CFG Scale 15</h5>
+			<video controls class="video-responsive" autoplay loop muted playsinline>
+				<source src="./resources/ablation/ddim-15-parkour-v2.mp4" type="video/mp4">
+				</video>
+		</div>
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">	
+			<h5 class="title-responsive">CFG Scale 20</h5>
+			<video controls class="video-responsive" autoplay loop muted playsinline>
+				<source src="./resources/ablation/ddim-20-parkour-v2.mp4" type="video/mp4">
+				</video>
+		</div>
+	</div>	
+	<div class="row justify-content-md-center">
+		<p class="p1">A man is doing parkour → A <span style="color:red; font-weight:bold">shiny silver robot</span> is doing parkour</p>
+	</div>
+	<center><p>
+		Slicedit uses DDPM inversion. For ablation purposes we provide results of our method with DDIM inversion.
+		As can be seen, when using DDIM inversion our method is not able to successfully edit the video according to the text prompt, 
+		using different classifier-free guidance (CFG) scales.	 
+		Results are given for CFG value of 10, 15, 20.
+	</p></center>
+</center>
+
+	<center><h1 style="margin-top: 65px; margin-bottom: 30px;">Limitation</h1></center>
+
+	<center>
+<div class="container-fluid">
+	<div class="row clearfix">
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+			<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+				<source src="./resources/original/dog-car.mp4" type="video/mp4">
+				</video>
+			<p class="p1">A small dog is looking out a car window</p>
+			</div>
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+			<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+				<source src="./resources/edits/dog-car-elephant-v2.mp4" type="video/mp4">
+				</video>
+			<p class="p1">A small <span style="color:red; font-weight:bold">elephant</span> is looking out a car window</p>
+		</div>
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+			<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+				<source src="./resources/original/tesla.mp4" type="video/mp4">
+				</video>
+			<p class="p1">A car on the road</p>
+			</div>
+		<div class="col" style="padding-right: 0px; padding-left: 0px; flex-shrink: 0;">
+			<video controls class="video-responsive-examples" autoplay loop muted playsinline>
+				<source src="./resources/edits/tesla-tractor-v2.mp4" type="video/mp4">
+				</video>
+			<p class="p1">A <span style="color:red; font-weight:bold">tractor</span> on the road</p>
+		</div>
+	</div>
+</div>
+
+		</center>
+	<br>
+
+	<!-- end Ablation -->
+
+		<!-- References -->
+		<h3>References</h3>
+		<p>
+			[1] Geyer, Michal, Omer Bar-Tal, Shai Bagon, and Tali Dekel. "Tokenflow: Consistent diffusion features for consistent video editing." ICLR 2024.<br>
+			[2] Ceylan, Duygu, Chun-Hao P. Huang, and Niloy J. Mitra. "Pix2video: Video editing using image diffusion." ICCV 2023.<br>
+			[3] Zhang, Yabo, Yuxiang Wei, Dongsheng Jiang, Xiaopeng Zhang, Wangmeng Zuo, and Qi Tian. "Controlvideo: Training-free controllable text-to-video generation." ICLR 2024. <br>
+			[4] Yang, Shuai, Yifan Zhou, Ziwei Liu, and Chen Change Loy. "Rerender A Video: Zero-Shot Text-Guided Video-to-Video Translation." SIGGRAPH Asia 2023. <br>
+			[5] Wu, Jay Zhangjie, Yixiao Ge, Xintao Wang, Stan Weixian Lei, Yuchao Gu, Yufei Shi, Wynne Hsu, Ying Shan, Xiaohu Qie, and Mike Zheng Shou. "Tune-a-video: One-shot tuning of image diffusion models for text-to-video generation." ICCV 2023. <br>
+			[6] Cong, Yuren, Mengmeng Xu, Christian Simon, Shoufa Chen, Jiawei Ren, Yanping Xie, Juan-Manuel Perez-Rua, Bodo Rosenhahn, Tao Xiang, and Sen He. "FLATTEN: optical FLow-guided ATTENtion for consistent text-to-video editing." ICLR 2024. <br>
+		</p>
+		<hr>
+	<br>
+
+</div>
+
+<script src="functionality.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
